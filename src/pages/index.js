@@ -1,79 +1,44 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Helmet from 'react-helmet'
+import Layout from '../components/layout'
+import Banner from '../components/Banner'
 
-export default class IndexPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
-
-    return (
-      <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  style={{ border: '1px solid #333', padding: '2em 4em' }}
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </div>
-              ))}
-          </div>
-        </section>
-      </Layout>
-    )
-  }
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
+export const query = graphql`
+    query HeadingQuery {
+    site {
+        siteMetadata {
+            title,
+            description,
           }
         }
-      }
     }
-  }
 `
+
+class HomeIndex extends React.Component {
+    render() {
+        const { data } = this.props
+        return (
+            <Layout>
+                <Helmet>
+                    <html lang="en" />
+                    <title>{data.site.siteMetadata.title}</title>
+                    <meta name="description" content={data.site.siteMetadata.description} />
+                    
+                    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png" />
+                        <link rel="icon" type="image/png" href="/img/favicon-32x32.png" sizes="32x32" />
+                        <link rel="icon" type="image/png" href="/img/favicon-16x16.png" sizes="16x16" />
+                        <link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="#0a3845" />
+                        <meta name="theme-color" content="#fff" />
+                        <meta property="og:type" content="business.business" />
+                    <meta property="og:title" content={data.site.siteMetadata.title} />
+                    <meta property="og:url" content="/" />
+                    <meta property="og:image" content="/img/og-image.jpg" />
+                </Helmet>
+                <Banner />
+            </Layout>
+        )
+    }
+}
+
+export default HomeIndex
