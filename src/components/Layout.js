@@ -2,7 +2,7 @@ import React from 'react'
 
 import { graphql } from "gatsby"
 
-import Navbar from '../components/Navbar'
+import Navbar from './Navbar'
 import './all.sass'
 import '../assets/scss/main.scss'
 import Header from './Header'
