@@ -5922,6 +5922,11 @@ gatsby-link@^2.0.7:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
+gatsby-plugin-gtag@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-gtag/-/gatsby-plugin-gtag-1.0.4.tgz#9aa8e44e842a26903f26dd76c6097fbf85670cf2"
+  integrity sha512-QmFv0Rm5ZfAIXtI4MZwHJ7M7x6f0/ZzCvNnRZDReCUSCwwSx44oKe0GjJwBJ/Z9DRLmPjfs0zRvvkQFKNRtDRg==
+
 gatsby-plugin-netlify-cms@^3.0.9:
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-netlify-cms/-/gatsby-plugin-netlify-cms-3.0.9.tgz#d525774b1079e5ae9d3ea887e10e674541d75b28"
