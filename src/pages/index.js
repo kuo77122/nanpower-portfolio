@@ -34,6 +34,7 @@ class HomeIndex extends React.Component {
                     <meta property="og:title" content={data.site.siteMetadata.title} />
                     <meta property="og:url" content="/" />
                     <meta property="og:image" content="/img/og-image.jpg" />
+                    <meta name="google-site-verification" content="a9uMwllg_n5jDSibbSi-xtEWh3rZB9x01G2GSYq56Ww" />
                 </Helmet>
                 <Banner />
             </Layout>
